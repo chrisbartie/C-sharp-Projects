@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34622.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "prjBandDelegate", "prjBandDelegate\prjBandDelegate.csproj", "{04233F9C-C7AD-4AFB-839F-19AC3E370D48}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{04233F9C-C7AD-4AFB-839F-19AC3E370D48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04233F9C-C7AD-4AFB-839F-19AC3E370D48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04233F9C-C7AD-4AFB-839F-19AC3E370D48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04233F9C-C7AD-4AFB-839F-19AC3E370D48}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9F99CF3B-3AA1-4EA2-B200-7E8694415F62}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,134 @@
+﻿<Window x:Class="recipePOE.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:recipePOE"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    
+    <Grid Background="AliceBlue">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="319*"/>
+            <ColumnDefinition Width="441*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel x:Name="homePanel" Visibility="Visible" Grid.ColumnSpan="3">
+            <StackPanel.Background>
+                <ImageBrush ImageSource="pack://application:,,,/Images/background.jpeg" Stretch="Fill"/>
+            </StackPanel.Background>
+            <Label Margin="15,0,15,0" FontWeight="Bold" Foreground="Red" FontSize="18" HorizontalContentAlignment="Center" BorderBrush="#00000000" Width="362" Background="#00000000" FontStyle="Italic">Welcome to The Recipe Storage !!
+            </Label>
+            <Label Margin="15,0,15,0" Foreground="#FFD82B2B" FontWeight="Bold" FontStyle="Italic" HorizontalContentAlignment="Center">Create and Store your Recipes right here !!</Label>
+            <Button x:Name="btnToEnterRec" Background="CornflowerBlue" Click="btnToEnterRec_Click"  HorizontalAlignment="Center" Margin="15,20,0,0" Height="30" Width="250" FontWeight="Bold" BorderThickness="3,2,3,2">
+                <Button.BorderBrush>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="Black" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.BorderBrush> 1. Enter a Recipe
+            </Button>
+            <Button x:Name="btnToViewRec" Background="CornflowerBlue" Click="btnToViewRec_Click"  HorizontalAlignment="Center" Margin="15,25,0,0" Height="30" Width="250" FontWeight="Bold" BorderThickness="3,2,3,2">
+                <Button.BorderBrush>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="Black" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.BorderBrush> 2. View a Recipe
+            </Button>
+            <Button x:Name="btnToScale" Background="CornflowerBlue" Click="btnToScale_Click"  HorizontalAlignment="Center" Margin="15,25,0,0" Height="30" Width="250" BorderBrush="Black" FontWeight="Bold" BorderThickness="3,2,3,2">3. Scale a Recipe</Button>
+            <Button x:Name="btnToResetRec" Background="CornflowerBlue" Click="btnToResetRec_Click"  HorizontalAlignment="Center" Margin="15,25,0,0" Height="30" Width="250" BorderBrush="Black" FontWeight="Bold" BorderThickness="3,2,3,2">4. Reset Quantities</Button>
+            <Button x:Name="btnToClearStorage" Background="CornflowerBlue" Click="btnToClearStorage_Click"  HorizontalAlignment="Center" Margin="15,25,0,0" Height="30" Width="250" BorderBrush="Black" FontWeight="Bold" BorderThickness="3,2,3,2">5. Clear Storage</Button>
+        </StackPanel>
+
+
+        <StackPanel x:Name="enterRecipe" Visibility="Hidden" Grid.ColumnSpan="3">
+            <Label Margin="15,0,15,0" FontWeight="Bold">Recipe Name:</Label>
+            <TextBox x:Name="recName" Margin="15,0,15,0" Height="25"></TextBox>
+            <Label Margin="15,0,15,0" FontWeight="Bold">Number of Ingredients:</Label>
+            <TextBox x:Name="tbNumIngreds" Margin="15,0,15,0" Height="25"></TextBox>
+            <Label Margin="15,0,15,0" FontWeight="Bold">Number of Steps:</Label>
+            <TextBox x:Name="tbNumSteps" Margin="15,0,15,0" Height="25"></TextBox>
+
+            <StackPanel x:Name="pnlIngredients" Grid.ColumnSpan="3">
+            </StackPanel>
+
+            <Button x:Name="btnEnter" Background="MediumAquamarine" Click="btnEnter_Click"  HorizontalAlignment="Left" Margin="15,25,0,0" Height="30" Width="250" FontWeight="Bold" BorderBrush="Black" BorderThickness="3,2,3,2">Enter Recipe</Button>
+            <Button x:Name="btnHome" Background="MediumAquamarine" Click="btnHome_Click"  HorizontalAlignment="Left" Margin="15,10,0,0" Height="30" Width="250" FontWeight="Bold" BorderBrush="Black" BorderThickness="3,2,3,2">Home</Button>
+        </StackPanel>
+
+        <StackPanel x:Name="pnlSteps" Visibility="Collapsed" Grid.ColumnSpan="3">
+            <Label Margin="15,0,15,0" FontWeight="Bold">Recipe Steps:</Label>
+            <TextBox x:Name="tbSteps" Margin="15,0,15,0" Height="30"></TextBox>
+            <Button x:Name="btnAddSteps" Background="MediumAquamarine" Click="btnAddSteps_Click"  Margin="15,25,0,0" Height="30" Width="250" FontWeight="Bold" BorderBrush="Black" BorderThickness="3,2,3,2" HorizontalAlignment="Left">Add Step</Button>
+            <Button x:Name="btnFinish" Background="MediumAquamarine" Click="btnFinish_Click"  Margin="15,10,0,0" Height="30" Width="250" FontWeight="Bold" BorderBrush="Black" BorderThickness="3,2,3,2" HorizontalAlignment="Left">Home</Button>
+        </StackPanel>
+
+        <StackPanel x:Name="recipeDetails" Visibility="Hidden" Grid.ColumnSpan="3">
+            <Label Margin="15,0,15,0" FontWeight="Bold" FontSize="16">Recipe Details</Label>
+            <Label Margin="15,0,15,0" FontWeight="Bold">Ingredient:</Label>
+            <TextBox x:Name="tbIngred" Margin="15,0,15,0" Height="25"></TextBox>
+            <Label Margin="15,0,15,0" FontWeight="Bold">Ingredient Quantity:</Label>
+            <TextBox x:Name="tbIngredQuantity" Margin="15,0,15,0" Height="25"></TextBox>
+            <Label Margin="15,0,15,0" FontWeight="Bold">Unit of Measurement:</Label>
+            <TextBox x:Name="tbIngredUnit" Margin="15,0,15,0" Height="25"></TextBox>
+            <Label Margin="15,0,15,0" FontWeight="Bold">Calories:</Label>
+            <TextBox x:Name="tbCalories" Margin="15,0,15,0" Height="25"></TextBox>
+            <Label Margin="15,0,15,0" FontWeight="Bold">Food Group:</Label>
+            <ComboBox Margin="15,0,15,0" Name="cbFoodGroup" HorizontalAlignment="Left" VerticalAlignment="Top" Width="250" Height="30">
+                
+                <!--Code Attribution
+                The food groups were taken from sweetlife
+                https://sweetlife.org.za/what-are-the-different-food-groups-a-simple-explanation/
+                [s.a.]-->
+                <ComboBoxItem Content="Starchy Foods"></ComboBoxItem>
+                <ComboBoxItem Content="Vegetables and fruits"></ComboBoxItem>
+                <ComboBoxItem Content="Dry beans, peas, lentils and soya"></ComboBoxItem>
+                <ComboBoxItem Content="Chicken, fish, meat and eggs"></ComboBoxItem>
+                <ComboBoxItem Content="Milk and dairy products"></ComboBoxItem>
+                <ComboBoxItem Content="Fats and oil"></ComboBoxItem>
+                <ComboBoxItem Content="Water"></ComboBoxItem>
+            </ComboBox>
+            <Button x:Name="btnAddIngred" Background="MediumAquamarine" Click="btnAddIngred_Click" Margin="15,15,0,0" Height="30" Width="250" HorizontalAlignment="Left" FontWeight="Bold" BorderBrush="Black" BorderThickness="3,2,3,2">Add Ingredient</Button>
+        </StackPanel>
+        
+
+        <StackPanel x:Name="searchRecipe" Visibility="Hidden" Grid.ColumnSpan="3">
+            <Label Margin="15,0,15,0" FontWeight="Bold">Name of Recipe:</Label>
+            <TextBox x:Name="recipeName" Margin="15,0,15,0" Height="30"></TextBox>
+            <Button x:Name="btnSearch" Background="MediumAquamarine" Click="btnSearch_Click"  Height="30" Width="250" HorizontalAlignment="Left" Margin="15,25,0,0" FontWeight="Bold" BorderBrush="Black" BorderThickness="3,2,3,2">Search</Button>
+            <Button x:Name="btnDisplayRecipes" Background="MediumAquamarine" Click="btnDisplayRecipes_Click"  Height="30" Width="250" HorizontalAlignment="Left" Margin="15,10,0,0" FontWeight="Bold" BorderBrush="Black" BorderThickness="3,2,3,2">Display All Recipes</Button>
+            <Button x:Name="btnHome1" Background="MediumAquamarine" Click="btnHome1_Click"  HorizontalAlignment="Left" Margin="15,10,0,0" Height="30" Width="250" FontWeight="Bold" BorderBrush="Black" BorderThickness="3,2,3,2">Home</Button>
+        </StackPanel>
+
+        <StackPanel x:Name="scaleRecipe" Visibility="Hidden" Grid.ColumnSpan="3">
+            <Label Margin="15,0,15,0" FontWeight="Bold">Scale Recipe</Label>
+            <Label Margin="15,0,15,0" FontWeight="Bold">Enter Recipe Name to Scale:</Label>
+            <TextBox x:Name="recScale" Margin="15,0,15,0" Height="30"></TextBox>
+            <Label Margin="15,0,15,0" FontWeight="Bold">Scale Amount:</Label>
+            
+            <!--Code Attribution
+            this combo box was made using c# corner
+            https://www.c-sharpcorner.com/uploadfile/mahesh/wpf-combobox/
+            Mahesh Chand
+            https://www.c-sharpcorner.com/members/mahesh-chand-->
+            <ComboBox Margin="15,0,15,0" Name="cbRecScale" HorizontalAlignment="Left" VerticalAlignment="Top" Width="250" Height="30" IsEnabled="True">
+                <ComboBoxItem Content="0.5"></ComboBoxItem>
+                <ComboBoxItem Content="2"></ComboBoxItem>
+                <ComboBoxItem Content="3"></ComboBoxItem>
+            </ComboBox>
+            <Button x:Name="btnScaleRecipe" Background="MediumAquamarine" Click="btnScaleRecipe_Click"  HorizontalAlignment="Left" Margin="15,10,0,0" Height="30" Width="250" FontWeight="Bold" BorderBrush="Black" BorderThickness="3,2,3,2">Scale Recipe</Button>
+            <Button x:Name="btnToHome" Background="MediumAquamarine" Click="btnToHome_Click"  HorizontalAlignment="Left" Margin="15,10,0,0" Height="30" Width="250" FontWeight="Bold" BorderBrush="Black" BorderThickness="3,2,3,2">Home</Button>
+        </StackPanel>
+
+        <StackPanel x:Name="resetRec" Visibility="Hidden" Grid.ColumnSpan="3">
+            <Label Margin="15,0,15,0" FontWeight="Bold">Reset Recipe Quantities</Label>
+            <Label Margin="15,0,15,0" FontWeight="Bold">Enter Recipe Name to Reset Quantities of:</Label>
+            <TextBox x:Name="recNameReset" Margin="15,0,15,0" Height="30"></TextBox>
+            <Button x:Name="btnResetRec" Background="MediumAquamarine" Click="btnResetRec_Click"  HorizontalAlignment="Left" Margin="15,10,0,0" Height="30" Width="250" FontWeight="Bold" BorderBrush="Black" BorderThickness="3,2,3,2">Reset Recipe Quantities</Button>
+            <Button x:Name="btnResetAll" Background="MediumAquamarine" Click="btnResetAll_Click"  HorizontalAlignment="Left" Margin="15,10,0,0" Height="30" Width="250" FontWeight="Bold" BorderBrush="Black" BorderThickness="3,2,3,2">Reset all Recipe Quantities</Button>
+            <Button x:Name="btnMenu" Background="MediumAquamarine" Click="btnMenu_Click"  HorizontalAlignment="Left" Margin="15,10,0,0" Height="30" Width="250" FontWeight="Bold" BorderBrush="Black" BorderThickness="3,2,3,2">Home</Button>
+        </StackPanel>
+
+    </Grid>
+</Window>
